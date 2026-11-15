@@ -1,0 +1,38 @@
+/* Motion effects — respects reduced-motion preferences */
+.reveal {
+   opacity: 0; 
+   transform: translateY(22px); 
+   transition: opacity .7s ease, transform .7s ease; 
+  }
+.reveal.visible { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+.hero-content.reveal { 
+  transition-delay: .08s; 
+}
+.hero-visual.reveal { 
+  transition-delay: .2s; 
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+.tag-top { 
+  animation: float 5s ease-in-out infinite; 
+}
+.tag-bottom { 
+  animation: float 5s ease-in-out infinite 1.2s; 
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { 
+    animation-duration: .01ms !important; 
+    animation-iteration-count: 1 !important; 
+    transition-duration: .01ms !important; 
+  }
+  .reveal { 
+    opacity: 1; 
+    transform: none; 
+  }
+}
